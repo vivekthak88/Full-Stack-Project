@@ -1,0 +1,21 @@
+/* Code to See Div Borders - Testing & Alignment*/
+#testBorders {
+    border-color: red;
+    border-style: solid;
+    border-width: 1px;
+}
+/*Div Size Adjustment*/
+.col {
+    height: 250px;
+    width: 250px !important;
+    text-align: center;    
+}
+/*Padding Between Rows*/
+#firstContainer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/*Set Navbar Height*/
+#navbar {
+    height: 55px;
+}
