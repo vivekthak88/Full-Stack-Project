@@ -12,34 +12,45 @@ const { Sequelize, Model, DataTypes } = require('sequelize');
 //const sequelize = new Sequelize('sqlite::memory:');
 //bcrypt values
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
-const myPassword = 'test@password1234'; //hard coded here but needs passed from reg/login form
-const myPassword2 = 'faketestpassword@4321';
 
-bcrypt.hash(myPassword, saltRounds, function(err, hash) {
-    // Store hash in database here
-
-    //logs hash
-    console.log(hash);
+//register user
+app.post("/register", (req, res)=> {
+  const username = req.body.username;
+  const password = req.body.password;
+  bcrypt.genSalt(10, (err, salt)=> {
+    bcrypt.hash(password, salt, (err, hash)=> {
+      if(!err){
+        res.send("User Registered");
+        console.log(username, hash);
+      }
+    })
+  })
 });
 
-//Test script to run locally
-bcrypt.hash(myPassword, saltRounds, function(err, hash) { // Salt + Hash
-    bcrypt.compare(myPassword2, hash, function(err, result) {  // Compare
-      // if passwords match
-      if (result) {
-            console.log("It matches!")
-      }
-      // if passwords do not match
-      else {
-            console.log("Invalid password!");
-      }
-    });
-  });
-// actual place to compare hash vs password
-// bcrypt.compare(myPassword, hash, function(err, result) {
-//     // returns result
-//   });
+app.post('/login', (req, res) => {
+
+  const username = req.body.username
+  const password = req.body.password
+//User is table name
+  User.findOne({
+      username: username
+  }).then((user) => {
+      bcrypt.compare(password, user.password, (error, result) => {
+          if (result) {
+              // whatever you want to happen if there is no error
+              res.send("User Added");
+          } else {
+              res.json({success: false});
+          }
+      })
+  })
+});
+
+
+// Create router for login page
+// var login = require('./login.js');
+// app.use('/login', login);
+
 
 
 server.listen(port, hostname, () => {
