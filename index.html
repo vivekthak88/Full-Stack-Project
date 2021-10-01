@@ -10,25 +10,74 @@
     <title>Fizzy Framework</title>
 </head>
 <body>
-    <!--Navbar Code-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id = navbar>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">FIZZY LOGO HERE</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <!--Navbar Code-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        FIZZY IMAGE HERE - GET PNG
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <!--Code for Modal Login Menu-->
+            <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+            <div id="id01" class="modal">
+              <form class="modal-content animate" action="/action_page.php" method="post">
+                <div class="imgcontainer">
+                  <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
+                    <!--LINK TO FIZZY IMG-->
+                  <img src="./images/cropped-LOGO_360x.jpg" alt="fizzy" class="fizzy">
+                </div>
+                <div class="container" id="modalElements">
+                  <label for="uname"><b>Username</b></label>
+                  <input type="text" placeholder="Enter Username" name="uname" required>
+                  <label for="psw"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="psw" required>
+                  <button type="submit">Login</button>
+                </div>
+                <div class="container" style="background-color:#f1f1f1" id="cancelButton">
+                  <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </li>
+          <li class="nav-item">
+            <!--Code for Modal Signup Menu-->
+            <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+            <div id="id02" class="modal">
+              <form class="modal-content animate" action="/action_page.php" method="post">
+                <div class="imgcontainer">
+                  <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                    title="Close Modal">&times;</span>
+                    <!--LINK TO FIZZY IMG-->
+                  <img src="./images/cropped-LOGO_360x.jpg" alt="fizzy" class="fizzy">
+                </div>
+                <div class="container" id="modalElements">
+                  <label for="name"><b>Name</b></label>
+                  <input type="text" placeholder="Enter Name" name="name" required>
+                  <label for="psw"><b>Password</b></label>
+                  <input type="password" placeholder="Enter Password" name="psw" required>
+                  <label for="email"><b>Email</b></label>
+                  <input type="text" placeholder="Enter Email" name="email" required>
+                  <button type="submit">Sign Up</button>
+                </div>
+                <div class="container" style="background-color:#f1f1f1" id="cancelButton">
+                  <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
     <!--Container Code-->
     <div class="container" id=firstContainer>
