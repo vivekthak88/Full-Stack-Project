@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styleSplash.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<div id="id01" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="./images/cropped-LOGO_360x.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+</div><br>
+<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+<div id="id02" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="./images/cropped-LOGO_360x.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <label for="uname"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+            <label for="uname"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    var modal2 = document.getElementById('id02');
+</script>
+</html>
