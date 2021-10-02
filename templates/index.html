@@ -51,7 +51,7 @@
             <!--Code for Modal Signup Menu-->
             <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
             <div id="id02" class="modal">
-              <form class="modal-content animate" action="/action_page.php" method="post">
+              <form class="modal-content animate" action="/register" method="post">
                 <div class="imgcontainer">
                   <span onclick="document.getElementById('id02').style.display='none'" class="close"
                     title="Close Modal">&times;</span>
@@ -61,10 +61,10 @@
                 <div class="container" id="modalElements">
                   <label for="name"><b>Name</b></label>
                   <input type="text" placeholder="Enter Name" name="name" required>
+                  <label for="username"><b>Username</b></label>
+                  <input type="text" placeholder="Enter Username" name="username" required>
                   <label for="psw"><b>Password</b></label>
-                  <input type="password" placeholder="Enter Password" name="psw" required>
-                  <label for="email"><b>Email</b></label>
-                  <input type="text" placeholder="Enter Email" name="email" required>
+                  <input type="password" placeholder="Enter Password" name="password" required>
                   <button type="submit">Sign Up</button>
                 </div>
                 <div class="container" style="background-color:#f1f1f1" id="cancelButton">

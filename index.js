@@ -7,21 +7,31 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 const server = http.createServer(app);
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
 //sequelize values
 const { Sequelize, Model, DataTypes } = require('sequelize');
-//const sequelize = new Sequelize('sqlite::memory:');
+const sequelize = new Sequelize('sqlite::memory:');
+const templateEngine = require('express-es6-template-engine')
+//connects to html page in templates folder
+app.engine('html',templateEngine);
+app.set('views','templates');
+app.set('view engine','html');
 //bcrypt values
 const bcrypt = require('bcrypt');
 const users = require("./models").users;
 
+app.get('/index',(req,res) =>{
+  res.render('index');
+});
+
 //register new user to DB
 app.post("/register", async (req, res)=> {
   res.setHeader("Content-Type", "application/json");
-    let hash;
+  let hash;
     await bcrypt.genSalt(10, (err, salt)=> {
       hash = bcrypt.hash(req.body.password, salt, (err, hash)=> {
         if(!err){
-          res.send("User Registered");
           console.log(hash);
           users.create ({
             name : req.body.name,
@@ -30,8 +40,11 @@ app.post("/register", async (req, res)=> {
           })
             console.log(users);
         }
+        
       })
+
     })
+    res.send("User " + req.body.username + " Added");
 });
 //See all users in DB
 app.get('/users', async (req, res) => {
