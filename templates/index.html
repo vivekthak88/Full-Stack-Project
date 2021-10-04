@@ -10,12 +10,14 @@
 </head>
 <body>
     <h3>
-        Words about fizzy. Words about stuff. Stuff about words.
+        100% Handmade in small batches in Manchester Tennessee.  We use high quality ingredients and try to create unique creations. Thank you for shopping handmade. Let us know if we can help you in any way!
     </h3>
     <div class="container">
         <div class="row">
             <div class="col">
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+            </div>
+            <div class="col" id='buttonCol'>
+                <button onclick="document.getElementById('id01').style.display='block'">Login</button>
                 <div id="id01" class="modal">
                     <form class="modal-content animate" action="/register" method="post">
                         <div class="imgcontainer">
@@ -32,10 +34,7 @@
                         </div>
                     </form>
                 </div>
-
-            </div>
-            <div class="col">
-                <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+                <button onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
                 <div id="id02" class="modal">
                     <form class="modal-content animate" action="/register" method="post">
                         <div class="imgcontainer">
@@ -54,18 +53,26 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="col">
             </div><br>
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <img src="./images/pngegg.png">
+                    </div>
+                    <div class="col" id="bombImg">
+                        <img src="./images/output-onlinepngtools.png">
+                    </div>
+                    <div class="col">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <h5>
-        More words about fizzy. More words about stuff. More stuff about words.
+        Subscribe to our newsletter - Promotions, new products, and sales. Directly to your inbox.
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email">
     </h5>
 </body>
 <script>
