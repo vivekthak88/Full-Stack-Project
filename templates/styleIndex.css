@@ -1,6 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url(./images/wallpaperflare.com_wallpaper.jpg);
+  background: url('./images/bathbomb_353924.jpg')
 }
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -13,39 +13,44 @@ input[type=text], input[type=password] {
 }
 /*Style the Top Text*/
 h3 {
-  width: 600px;
+  width: 480px;
   border-style: outset;
-  border-color: hotpink;
-  color: rgb(225, 0, 255);
+  border-color: #831292;
+  color: #831292;
   background-color: rgb(255, 214, 255);
   margin-bottom: 25px;
+  margin:auto;
   text-align: center;
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+/*Top Box Styling*/
 h5 {
-  width: 400px;
+  width: 440px;
   border-style: outset;
-  border-color: hotpink;
-  color: rgb(225, 0, 255);
+  border-color: #831292;
+  color: #831292;
   background-color: rgb(255, 214, 255);
-  margin-bottom: 25px;
+  margin:auto;
   text-align: center;
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+#bombImg {
+  padding-bottom: 70px;
 }
 /* Set a style for all buttons */
 button {
   background-color: rgb(255, 214, 255);
-  color: black;
+  border-color: #831292;
+  color: #831292;
   padding: 14px 20px;
   margin: 8px 0;
   width: 100%;
-  border-radius: 50%;
 }
 /* Extra styles for the cancel button */
 .cancelbtn {
@@ -65,6 +70,10 @@ button {
 }
 #id02 {
   padding: 16px;
+}
+#buttonCol {
+  margin: auto;
+  width: 50%;
 }
 /* The Modal (background) */
 .modal {
