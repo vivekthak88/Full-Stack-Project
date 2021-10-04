@@ -77,7 +77,7 @@ const bathbombs = [{
   pinterest: 'https://www.pinterest.com/pin-builder/?url=https%3A%2F%2Ffizzyfizzy.com%2Fproducts%2Fhot-cocoa-body-frosting-scrub&media=%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0029%2F8657%2F3935%2Fproducts%2F20210731_001218_1024x1024.jpg%3Fv%3D1627744925&description=Hot%20Cocoa%20Body%20Frosting%20Scrub&method=button',
 }];
 
-//Get Products by Primary Key
+//Get Products by Primary Key??
 app.get('/bathbombs/:bId',(req,res) =>{
   const bathbombId = req.params['bId'];
   const productNeeded = bathbombs.find( c => c.id === bathbombId);
