@@ -1,16 +1,16 @@
 /* Code to See Div Borders - Testing & Alignment*/
 #testBorders {
-    border-color: #831292;
+    border-color: black;
     border-style: solid;
     border-width: 3px;
+    border-radius: 25px;
     margin-left: 10px;
     margin-right: 10px;
     background-color: rgb(247, 236, 244);
 }
 /*Div Size Adjustment*/
 .col {
-    height: 400px;
-    width: 250px !important;
+    width: 250px;
     text-align: center;
     vertical-align: middle;
     color: #831292
@@ -21,11 +21,24 @@
     padding-bottom: 20px;
 }
 body {
-    background-image: url('./images/wallpaperflare.com_wallpaper.jpg')
+    background-image: url('./images/3643882.jpg')
 }
 /*Contact Menu Background*/
 .dropdown-menu {
     background-color: rgb(247, 236, 244);
     border-style: solid 2px;
     border-color: #831292;
+}
+#catImg {
+    width: 220px;
+    border-style: outset;
+    border-color: #831292;
+    border-radius: 25px;
+}
+#ingList {
+    font-size: 10pt;
+    color: black;
+}
+h3 {
+    font-style: oblique;
 }

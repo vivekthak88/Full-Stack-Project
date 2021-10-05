@@ -11,11 +11,16 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+#fizzyLogo {
+  border-style: outset;
+  border-color: #831292;
+}
 /*Style the Top Text*/
 h3 {
   width: 480px;
   border-style: outset;
   border-color: #831292;
+  border-radius: 25px;
   color: #831292;
   background-color: rgb(255, 214, 255);
   margin-bottom: 25px;
@@ -31,6 +36,7 @@ h5 {
   width: 440px;
   border-style: outset;
   border-color: #831292;
+  border-radius: 25px;
   color: #831292;
   background-color: rgb(255, 214, 255);
   margin:auto;
@@ -47,6 +53,7 @@ h5 {
 button {
   background-color: rgb(255, 214, 255);
   border-color: #831292;
+  border-radius: 25px;
   color: #831292;
   padding: 14px 20px;
   margin: 8px 0;
@@ -91,7 +98,7 @@ button {
 }
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
+  background-color: rgb(250, 239, 252);
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
