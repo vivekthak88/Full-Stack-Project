@@ -22,8 +22,8 @@ const sequelize = new Sequelize('sqlite::memory:');
 const bcrypt = require('bcrypt');
 const users = require("./models").users;
 //pgp and db requirements
-const pgp = require("pg-promise")();
-const db = pgp("postgres://Julia@127.0.0.1:5432/products");
+// const pgp = require("pg-promise")();
+// const db = pgp("postgres://Julia@127.0.0.1:5432/products");
 
 app.get('/index',(req,res) =>{
   res.render('index');
@@ -100,7 +100,7 @@ app.get("/users/:username", async (req, res) => {
       where: { username: username },
 
   });
-  res.status(200).send(user);
+  res.status(200).send(JSON.stringify(user));
 });
 // update a user
 //instead of :name, should be unique id/primary key
@@ -114,7 +114,7 @@ app.put("/users/:username", async (req, res) => {
       }
   );
   //user updated needs more info
-  res.status(200).send("User name updated!!");
+  res.status(200).send(req.body.username + " name updated!!");
   //res.status(200).send(JSON.stringify(user));
 });
 // app.post('/login', (req, res) => {
