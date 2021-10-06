@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/vivekthak88/Full-Stack-Project#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",

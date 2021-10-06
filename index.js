@@ -13,19 +13,23 @@ const hostname = "127.0.0.1";
 const port = 3000;
 //express values
 const server = http.createServer(app);
-// var bodyParser = require('body-parser');
-// app.use(bodyPcd arser.urlencoded({extended: false}));
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
 //sequelize values
 const { Sequelize, Model, DataTypes, BelongsToMany} = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 //bcrypt values
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const users = require("./models/users.js")
 const bathbombs = require("./models/bathbombs.js");
 
 const pgp = require("pg-promise")();
 const db = pgp("postgres://Julia@127.0.0.1:5432/products");
+app.use(express.static('css'))
 
+app.get('/index',(req,res) =>{
+  res.render('index');
+});
 // //Array of Items
 // const bathbombs = [
 //   {
@@ -99,9 +103,9 @@ app.get('/bathbombs/:id', (req,res) => {
 // The path parameter :id will be mapped to the value supplied in the url which can be retrieved via req.params
 // For example : When http://localhost:3000/breeds/abys is called, the path parameter 'abys' will be mapped to the :id
   let bathbombId = req.params.id;
-  console.table(req.params);
+  console.log(req.params);
   db.any("SELECT * FROM bathbombs where id = $1", bathbombId).then((bathbombs) => {
-    // res.status(200).send(JSON.stringify(bathbombs)); 
+    res.status(200).send(JSON.stringify(bathbombs)); 
   if(bathbombId){
     res.status(200).send(JSON.stringify(bathbombs));
   }else{
@@ -125,9 +129,7 @@ app.post("/register", async (req, res)=> {
           })
             console.log(users);
         }
-        
       })
-
     })
     res.send("User " + req.body.username + " Added");
 });
