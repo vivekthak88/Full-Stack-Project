@@ -147,3 +147,13 @@ app.put("/users/:username", async (req, res) => {
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
   });
+
+//Code To Add to Login/Register functions to redirect to catalog  
+/*function validate(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+if ( username == "Formget" && password == "formget#123"){
+alert ("Login successfully");
+window.location = "/catalog.html"; // Redirecting to other page.
+return false;
+}*/
