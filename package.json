@@ -12,7 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/vivekthak88/Full-Stack-Project.git"
   },
-  "keywords": [],
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -29,6 +32,9 @@
     "pg-promise": "^10.11.0",
     "sequelize": "^6.6.5",
     "sqlite3": "^5.0.2"
+  },
+  "engines": {
+    "node": "16.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.13",
