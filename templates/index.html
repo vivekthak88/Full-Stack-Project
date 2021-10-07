@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fizzy Fizzy</title>
+    <script src=../index.js></script>
 </head>
 <body>
     <h3>
@@ -20,18 +21,18 @@
                 <!--Login Button-->
                 <button onclick="document.getElementById('id01').style.display='block'">Login</button>
                 <div id="id01" class="modal">
-                    <form class="modal-content animate" action="/register" method="post">
+                    <form class="modal-content animate" action="/login" method="post">
                         <div class="imgcontainer">
                             <span onclick="document.getElementById('id01').style.display='none'" class="close"
                                 title="Close Modal">&times;</span>
                             <img src="./images/cropped-LOGO_360x.jpg" alt="Avatar" class="avatar" id="fizzyLogo">
                         </div>
                         <div class="container">
-                            <label for="username"><b>Username</b></label>
+                            <label for="username" id="u1"><b>Username</b></label>
                             <input type="text" placeholder="Enter Username" name="username" required>
                             <label for="password"><b>Password</b></label>
                             <input type="password" placeholder="Enter Password" name="password" required>
-                            <button onclick="validate()">Login</button>
+                            <button onclick= "validate()">Login</button>
                         </div>
                     </form>
                 </div>

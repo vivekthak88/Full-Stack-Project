@@ -7,7 +7,7 @@ const express = require('express'),
   es6Renderer = require('express-es6-template-engine'),
   app = express();
 const server = http.createServer(app);
-  
+ app.use(express.json());
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
@@ -104,33 +104,39 @@ app.get("/users/:username", async (req, res) => {
 });
 // update a user
 //instead of :name, should be unique id/primary key
-app.put("/users/:username", async (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  let username = req.params["username"];
-  const user = await users.update(
-      { name: req.body.name },
-      {
-          where: {username: username},
-      }
-  );
+// app.put("/users/:username", async (req, res) => {
+//   res.setHeader("Content-Type", "application/json");
+//   let username = req.params["username"];
+//   const user = await users.update(
+//       { name: req.body.name },
+//       {
+//           where: {username: username},
+//       }
+//   );
   //user updated needs more info
-  res.status(200).send(req.body.username + " name updated!!");
+  //res.status(200).send(req.body.username + " name updated!!");
   //res.status(200).send(JSON.stringify(user));
-});
+//});
 // app.post('/login', (req, res) => {
 //   res.setHeader("Content-Type", "application/json");
-
-//   const username = req.body.username
-//   const password = req.body.password
+//   username = req.body.username;
+//   password = req.body.password;
+//   console.log(username);
+//   console.log(password);
 // //User is table name
 //   users.findOne({
-//       username: username
-//   }).then((user) => {
-//       bcrypt.compare(password, user.password, (error, result) => {
-//           if (result) {
+//       where:{
+//       username: req.body.username
+//       }
+//   })
+//   .then((users) => {
+//       bcrypt.compare(password, users.password, (error, result) => {
+//           if (!error) {
 //               // whatever you want to happen if there is no error
-//               res.send("User Logged In");
+//               res.redirect("/catalog");
+//               //res.send("User Logged In");
 //           } else {
+//             console.log(error);
 //               res.json({success: false});
 //           }
 //       })
