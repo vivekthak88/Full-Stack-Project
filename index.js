@@ -25,8 +25,8 @@ const sequelize = new Sequelize('sqlite::memory:');
 const bcrypt = require('bcrypt');
 const users = require("./models").users;
 //pgp and db requirements
-// const pgp = require("pg-promise")();
-// const db = pgp("postgres://Julia@127.0.0.1:5432/products");
+const pgp = require("pg-promise")();
+const db = pgp("postgres://Julia@127.0.0.1:5432/products");
 
 app.get('/index',(req,res) =>{
   res.render('index');
@@ -49,7 +49,6 @@ app.get('/bathbombs/:id', (req,res) => {
   let bathbombId = req.params.id;
   console.log(req.params);
   db.any("SELECT * FROM bathbombs where id = $1", bathbombId).then((bathbombs) => {
-    res.status(200).send(JSON.stringify(bathbombs)); 
   if(bathbombId){
     res.status(200).send(JSON.stringify(bathbombs));
   }else{
@@ -152,10 +151,9 @@ app.get("/users/:username", async (req, res) => {
 // app.use('/login', login);
 
 
-
-// server.listen(port, hostname, () => {
-//     console.log(`Server running at http://${hostname}:${port}/`);
-//   });
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
 
 //Code To Add to Login/Register functions to redirect to catalog  
 /*function validate(){
