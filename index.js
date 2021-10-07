@@ -13,6 +13,9 @@ app.set('views', 'templates');
 app.set('view engine', 'html');
 app.use(express.static('templates'));
 
+// This is the way to start the server on heroku
+// app.listen(process.env.PORT || 8000, () => console.log("Server is running..."));
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 //sequelize values
