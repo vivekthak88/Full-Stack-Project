@@ -30,6 +30,9 @@
     "sequelize": "^6.6.5",
     "sqlite3": "^5.0.2"
   },
+  "engine": {
+    "node": "^16.10.0"
+  },
   "devDependencies": {
     "nodemon": "^2.0.13",
     "sequelize-cli": "^6.2.0"

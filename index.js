@@ -14,7 +14,7 @@ app.set('view engine', 'html');
 app.use(express.static('templates'));
 
 // This is the way to start the server on heroku
-// app.listen(process.env.PORT || 8000, () => console.log("Server is running..."));
+app.listen(process.env.PORT || 8000, () => console.log("Server is running..."));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
@@ -153,9 +153,9 @@ app.get("/users/:username", async (req, res) => {
 
 
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-  });
+// server.listen(port, hostname, () => {
+//     console.log(`Server running at http://${hostname}:${port}/`);
+//   });
 
 //Code To Add to Login/Register functions to redirect to catalog  
 /*function validate(){
