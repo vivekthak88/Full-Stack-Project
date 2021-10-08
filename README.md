@@ -16,8 +16,9 @@ This is a full-stack project developed during our DigitalCrafts boot camp.  Our 
 7. Express/ES6 Template Engine/Validator
 8. bcrypt
 
-### Navigation Instructions:
-
+### DBs on PostresSQL
+bathbombs,
+users
 
 ### Contributors:
 
