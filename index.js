@@ -58,6 +58,27 @@ app.get('/bathbombs/:id', (req,res) => {
 });
 });
 
+app.post("/login", async (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  const username = req.body.username;
+  const password = req.body.password;
+  users.findOne({
+    where: {
+      username: username,
+    },
+  }).then((users) => {
+    bcrypt.compare(password, users.password, function (err, isMatch) {
+      if (err) {
+        throw err;
+      } else if (!isMatch) {
+        console.log("Password doesn't match!");
+      } else {
+        res.redirect('/catalog.html')
+      }
+    });
+  });
+});
+
 //register new user to DB
 app.post("/register", async (req, res)=> {
   res.setHeader("Content-Type", "application/json");
@@ -153,9 +174,9 @@ app.get("/users/:username", async (req, res) => {
 
 
 
-// server.listen(port, hostname, () => {
-//     console.log(`Server running at http://${hostname}:${port}/`);
-//   });
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
 
 //Code To Add to Login/Register functions to redirect to catalog  
 /*function validate(){
