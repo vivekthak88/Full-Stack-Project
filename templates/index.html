@@ -20,7 +20,7 @@
                 <!--Login Button-->
                 <button onclick="document.getElementById('id01').style.display='block'">Login</button>
                 <div id="id01" class="modal">
-                    <form class="modal-content animate" action="/register" method="post">
+                    <form class="modal-content animate" action="/login" method="post">
                         <div class="imgcontainer">
                             <span onclick="document.getElementById('id01').style.display='none'" class="close"
                                 title="Close Modal">&times;</span>
@@ -28,10 +28,10 @@
                         </div>
                         <div class="container">
                             <label for="username"><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="username" required>
+                            <input type="text" placeholder="Enter Username" name="username" required minlength="2">
                             <label for="password"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" required>
-                            <button onclick="validate()">Login</button>
+                            <input type="password" placeholder="Enter Password" name="password" required required minlength="8">
+                            <button onclick="">Login</button>
                         </div>
                     </form>
                 </div>
@@ -46,12 +46,12 @@
                         </div>
                         <div class="container">
                             <label for="name"><b>Name</b></label>
-                            <input type="text" placeholder="Enter Name" name="name" required>
+                            <input type="text" placeholder="Enter Name" name="name" required minlength="2">
                             <label for="username"><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="username" required>
+                            <input type="text" placeholder="Enter Username" name="username" required minlength="2">
                             <label for="password"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" required>
-                            <button onclick="validate()">Sign Up</button>
+                            <input type="password" placeholder="Enter Password - 8 Character Minimum" name="password" required minlength="8">
+                            <button onclick="">Sign Up</button>
 
                         </div>
                     </form>
