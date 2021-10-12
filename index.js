@@ -7,14 +7,11 @@ const express = require('express'),
   es6Renderer = require('express-es6-template-engine'),
   app = express();
 const server = http.createServer(app);
- app.use(express.json());
+  
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
 app.use(express.static('templates'));
-
-// This is the way to start the server on heroku
-app.listen(process.env.PORT || 8000, () => console.log("Server is running..."));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
@@ -25,8 +22,8 @@ const sequelize = new Sequelize('sqlite::memory:');
 const bcrypt = require('bcrypt');
 const users = require("./models").users;
 //pgp and db requirements
-// const pgp = require("pg-promise")();
-// const db = pgp("postgres://Julia@127.0.0.1:5432/products");
+const pgp = require("pg-promise")();
+const db = pgp("postgres://Julia@127.0.0.1:5432/products");
 
 app.get('/index',(req,res) =>{
   res.render('index');
@@ -58,27 +55,6 @@ app.get('/bathbombs/:id', (req,res) => {
 });
 });
 
-app.post("/login", async (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  const username = req.body.username;
-  const password = req.body.password;
-  users.findOne({
-    where: {
-      username: username,
-    },
-  }).then((users) => {
-    bcrypt.compare(password, users.password, function (err, isMatch) {
-      if (err) {
-        throw err;
-      } else if (!isMatch) {
-        console.log("Password doesn't match!");
-      } else {
-        res.redirect('/catalog.html')
-      }
-    });
-  });
-});
-
 //register new user to DB
 app.post("/register", async (req, res)=> {
   res.setHeader("Content-Type", "application/json");
@@ -95,8 +71,9 @@ app.post("/register", async (req, res)=> {
         }
       })
     })
-    res.send("User " + req.body.username + " Added");
+    res.redirect('/catalog.html')
 });
+
 //See all users in DB
 app.get('/users', async (req, res) => {
   res.setHeader("Content-Type", "application/json");
@@ -124,6 +101,28 @@ app.get("/users/:username", async (req, res) => {
 
   });
   res.status(200).send(JSON.stringify(user));
+});
+app.post("/login", async (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  const username = req.body.username;
+  console.log(username);
+  const password = req.body.password;
+  console.log(password);
+  users.findOne({
+    where: {
+      username: username,
+    },
+  }).then((users) => {
+    bcrypt.compare(password, users.password, function (err, isMatch) {
+      if (err) {
+        throw err;
+      } else if (!isMatch) {
+        res.json('401 - Unauthorized');
+      } else {
+        res.redirect('/catalog.html')
+      }
+    });
+  });
 });
 
 // update a user
