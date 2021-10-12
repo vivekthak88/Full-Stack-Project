@@ -115,7 +115,6 @@ app.delete("/users/:username", async (req, res) => {
   res.status(200).send("User has been deleted!!");
 });
 // get one user
-//This code may have to be used in some form for login
 app.get("/users/:username", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   let username = req.params["username"];
@@ -126,64 +125,26 @@ app.get("/users/:username", async (req, res) => {
   });
   res.status(200).send(JSON.stringify(user));
 });
+
 // update a user
-//instead of :name, should be unique id/primary key
-// app.put("/users/:username", async (req, res) => {
-//   res.setHeader("Content-Type", "application/json");
-//   let username = req.params["username"];
-//   const user = await users.update(
-//       { name: req.body.name },
-//       {
-//           where: {username: username},
-//       }
-//   );
-  //user updated needs more info
-  //res.status(200).send(req.body.username + " name updated!!");
-  //res.status(200).send(JSON.stringify(user));
-//});
-// app.post('/login', (req, res) => {
-//   res.setHeader("Content-Type", "application/json");
-//   username = req.body.username;
-//   password = req.body.password;
-//   console.log(username);
-//   console.log(password);
-// //User is table name
-//   users.findOne({
-//       where:{
-//       username: req.body.username
-//       }
-//   })
-//   .then((users) => {
-//       bcrypt.compare(password, users.password, (error, result) => {
-//           if (!error) {
-//               // whatever you want to happen if there is no error
-//               res.redirect("/catalog");
-//               //res.send("User Logged In");
-//           } else {
-//             console.log(error);
-//               res.json({success: false});
-//           }
-//       })
-//   })
-// });
-
-
-// Create router for login page
-// var login = require('./login.js');
-// app.use('/login', login);
-
+app.put("/users/:name", async (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  let newName = req.params["name"];
+  await users.update(
+    {
+      name: req.body.name,
+      username: req.body.username
+    },
+    {
+      where: {
+        name: newName,
+      },
+    }
+  ).catch(err =>console.log(err));
+  res.status(200).send("User updated");
+});
 
 
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
   });
-
-//Code To Add to Login/Register functions to redirect to catalog  
-/*function validate(){
-var username = document.getElementById("username").value;
-var password = document.getElementById("password").value;
-if ( username == "Formget" && password == "formget#123"){
-alert ("Login successfully");
-window.location = "/catalog.html"; // Redirecting to other page.
-return false;
-}*/
