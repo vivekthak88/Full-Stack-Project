@@ -23,7 +23,7 @@ const bcrypt = require('bcrypt');
 const users = require("./models").users;
 //pgp and db requirements
 const pgp = require("pg-promise")();
-const db = pgp("postgres://Julia@127.0.0.1:5432/products");
+const db = pgp("postgres://postgres@127.0.0.1:5432/products");
 
 app.get('/index',(req,res) =>{
   res.render('index');
@@ -141,6 +141,22 @@ app.put("/users/:name", async (req, res) => {
     }
   ).catch(err =>console.log(err));
   res.status(200).send("User updated");
+});
+
+/*Routing for cat_info*/
+app.all('*', (req, res, next) => {
+  next();
+});
+
+app.get('bathbombs',(req,res) =>{
+  const products = bathbombs.find();
+  if(products){
+      res.render('catalog',{
+          locals : {
+              bathbombs
+          },
+      });
+  }
 });
 
 
