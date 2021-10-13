@@ -65,7 +65,6 @@ app.post("/register", async (req, res)=> {
     bcrypt.genSalt(10, (err, salt)=> {
       hash = bcrypt.hash(req.body.password, salt, (err, hash)=> {
         if(!err){
-          console.log(hash);
           users.create ({
             name : req.body.name,
             username : req.body.username,
@@ -82,7 +81,6 @@ app.get('/users', async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   const user = await users.findAll();
   console.log('Users in DB: ', user);
-  //console.log("All Users: ", JSON.stringify(users, null, 2));
   res.status(200).send(JSON.stringify(user));
 })
 // delete a user
@@ -108,9 +106,7 @@ app.get("/users/:username", async (req, res) => {
 app.post("/login", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   const username = req.body.username;
-  console.log(username);
   const password = req.body.password;
-  console.log(password);
   users.findOne({
     where: {
       username: username,
@@ -122,7 +118,7 @@ app.post("/login", async (req, res) => {
       } else if (!isMatch) {
         res.json('401 - Unauthorized');
       } else {
-        res.redirect('/catalog.html')
+        res.redirect('/catalog.html/')
       }
     });
   });
@@ -132,6 +128,7 @@ app.post("/login", async (req, res) => {
 app.put("/users/:name", async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   let newName = req.params["name"];
+  console.log(newName);
   await users.update(
     {
       name: req.body.name,
