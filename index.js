@@ -26,7 +26,7 @@ const bcrypt = require('bcrypt');
 const users = require("./models").users;
 //pgp and db requirements
 const pgp = require("pg-promise")();
-const db = pgp("postgres://postgres@127.0.0.1:5432/products");
+const db = pgp("postgres://@127.0.0.1:5432/products");
 
 app.get('/index',(req,res) =>{
   res.render('index');
@@ -148,13 +148,16 @@ app.all('*', (req, res, next) => {
   next();
 });
 
-app.get('bathbombs',(req,res) =>{
+app.get('/bathbombs',(req,res) =>{
   const products = bathbombs.find();
   if(products){
       res.render('catalog',{
           locals : {
               bathbombs
           },
+          partials : {
+            footer: 'partials/footer'
+          }
       });
   }
 });
