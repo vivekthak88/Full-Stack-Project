@@ -3,11 +3,10 @@ const http = require('http');
 const hostname = "127.0.0.1";
 const port = 3000;
 //express packages
-const express = require('express'),
-  es6Renderer = require('express-es6-template-engine'),
-  app = express();
-const server = http.createServer(app);
-  
+const express = require('express');
+const es6Renderer = require('express-es6-template-engine')
+const app = express();
+ 
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
@@ -148,20 +147,16 @@ app.all('*', (req, res, next) => {
   next();
 });
 
-app.get('/bathbombs',(req,res) =>{
-  const products = bathbombs.find();
-  if(products){
-      res.render('catalog',{
-          locals : {
-              bathbombs
-          },
+app.get('/home', (req,res) =>{
+      res.render('index',{
           partials : {
-            footer: 'partials/footer'
+              footer: 'partials/footer'
           }
       });
-  }
+  // }
 });
 
+const server = http.createServer(app);
 
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
