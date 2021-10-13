@@ -118,7 +118,7 @@ app.post("/login", async (req, res) => {
       } else if (!isMatch) {
         res.json('401 - Unauthorized');
       } else {
-        res.redirect('/catalog.html/')
+        res.redirect('/catalog.html')
       }
     });
   });
