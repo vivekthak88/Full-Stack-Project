@@ -4,9 +4,10 @@ const hostname = "127.0.0.1";
 const port = 3000;
 //express packages
 const express = require('express');
-const es6Renderer = require('express-es6-template-engine')
-const app = express();
- 
+ es6Renderer = require('express-es6-template-engine')
+ app = express();
+const server = http.createServer(app);
+ app.use(express.json());
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
@@ -155,8 +156,6 @@ app.get('/home', (req,res) =>{
       });
   // }
 });
-
-const server = http.createServer(app);
 
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
