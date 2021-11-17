@@ -13,6 +13,34 @@ app.set('views', 'templates');
 app.set('view engine', 'html');
 app.use(express.static('templates'));
 
+// Passport Code
+
+var passport = require('passport');
+const GitHubStrategy = require('passport-github').Strategy;
+
+passport.use(new GitHubStrategy({
+  clientID: '7f3a99397a8d64cd5466',
+  clientSecret: '28969721c4fdc6684d74fdd000084b1b86ea8181',
+  callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  User.findOrCreate({ githubId: profile.id }, function (err, user) {
+    return cb(err, user);
+  });
+}
+));
+
+app.get('/auth/github',
+  passport.authenticate('github'));
+
+app.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+
 // This is the way to start the server on heroku
 app.listen(process.env.PORT || 8000, () => console.log("Server is running..."));
 
@@ -24,6 +52,8 @@ const sequelize = new Sequelize('sqlite::memory:');
 //bcrypt values
 const bcrypt = require('bcrypt');
 const users = require("./models").users;
+const bathbombs = require("./models").bathbombs;
+
 //pgp and db requirements
 const pgp = require("pg-promise")();
 const db = pgp("postgres://@127.0.0.1:5432/products");
@@ -49,7 +79,6 @@ app.get('/bathbombs/:id', (req,res) => {
   let bathbombId = req.params.id;
   console.log(req.params);
   db.any("SELECT * FROM bathbombs where id = $1", bathbombId).then((bathbombs) => {
-    res.status(200).send(JSON.stringify(bathbombs)); 
   if(bathbombId){
     res.status(200).send(JSON.stringify(bathbombs));
   }else{
@@ -155,6 +184,15 @@ app.get('/home', (req,res) =>{
           }
       });
   // }
+});
+
+app.get('/catalog', (req,res) =>{
+  res.render('index',{
+      partials : {
+          footer: 'partials/footer'
+      }
+  });
+// }
 });
 
 server.listen(port, hostname, () => {
