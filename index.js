@@ -40,6 +40,15 @@ app.get('/auth/github/callback',
     res.redirect('/');
   });
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+  
+passport.deserializeUser(function(user, done) {
+    //User.findById(id, function(err, user) {
+      done(null, user);
+   // });
+  });
 
 // This is the way to start the server on heroku
 app.listen(process.env.PORT || 8000, () => console.log("Server is running..."));
