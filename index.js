@@ -13,6 +13,9 @@ app.set('views', 'templates');
 app.set('view engine', 'html');
 app.use(express.static('templates'));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Passport Code
 
 var passport = require('passport');
