@@ -13,13 +13,14 @@ app.set('views', 'templates');
 app.set('view engine', 'html');
 app.use(express.static('templates'));
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 // Passport Code
 
 var passport = require('passport');
 const GitHubStrategy = require('passport-github').Strategy;
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.use(new GitHubStrategy({
   clientID: '7f3a99397a8d64cd5466',
