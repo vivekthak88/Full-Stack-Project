@@ -38,7 +38,7 @@ app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/catalog');
+    // res.redirect('/catalog');
   });
 
 // This is the way to start the server on heroku
