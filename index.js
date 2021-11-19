@@ -2,6 +2,11 @@
 const http = require('http');
 const hostname = "127.0.0.1";
 const port = 3000;
+var passport = require('passport');
+const GitHubStrategy = require('passport-github2').Strategy;
+const path = require('path');
+var methodOverride = require('method-override');
+const cookie = require('cookie-session');
 //express packages
 const express = require('express');
  es6Renderer = require('express-es6-template-engine')
@@ -13,45 +18,27 @@ app.set('views', 'templates');
 app.set('view engine', 'html');
 app.use(express.static('templates'));
 
-
-
 // Passport Code
-
-var passport = require('passport');
-const GitHubStrategy = require('passport-github').Strategy;
-app.use(passport.initialize());
-app.use(passport.session());
-
 passport.use(new GitHubStrategy({
   clientID: '7f3a99397a8d64cd5466',
-  clientSecret: '28969721c4fdc6684d74fdd000084b1b86ea8181',
+  clientSecret: '31e0650163178757c32ce7aef696798ca15b7a33',
   callbackURL: "http://127.0.0.1:3000/auth/github/callback"
 },
-function(accessToken, refreshToken, profile, cb) {
+function(accessToken, refreshToken, profile, done) {
   User.findOrCreate({ githubId: profile.id }, function (err, user) {
-    return cb(err, user);
+    return done(err, user);
   });
 }
 ));
 
 app.get('/auth/github',
-  passport.authenticate('github'));
+  passport.authenticate('github', { scope: [ 'user:email' ] }));
 
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
-  });
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-  
-passport.deserializeUser(function(user, done) {
-    //User.findById(id, function(err, user) {
-      done(null, user);
-   // });
+    res.redirect('/catalog');
   });
 
 // This is the way to start the server on heroku
