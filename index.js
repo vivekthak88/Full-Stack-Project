@@ -22,7 +22,7 @@ app.use(express.static('templates'));
 passport.use(new GitHubStrategy({
   clientID: '7f3a99397a8d64cd5466',
   clientSecret: '31e0650163178757c32ce7aef696798ca15b7a33',
-  callbackURL: "http://127.0.0.1:3000/auth/github/callback"
+  callbackURL: "https://fizzyfizzybathbombs.herokuapp.com/auth/github/callback"
 },
 function(accessToken, refreshToken, profile, done) {
   User.findOrCreate({ githubId: profile.id }, function (err, user) {
